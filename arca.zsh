@@ -677,12 +677,12 @@ prompt_arca_setup() {
 		git:branch:cached    red
 		git:action           242
 		git:dirty            218
-		host                 242
+		host                 red
 		path                 blue
 		prompt:error         red
 		prompt:success       magenta
 		user                 10
-		user:root            default
+		user:root            red
 		virtualenv           242
 	)
 	prompt_arca_colors=("${(@kv)prompt_arca_colors_default}")
