@@ -1,0 +1,23 @@
+pkgname=zsh-arca-prompt-git
+pkgver=r61.7d3b317
+pkgrel=1
+pkgdesc='A minimal and arca prompt for zsh.'
+arch=('any')
+url='https://github.com/arcadia-moon/arca'
+license=('MIT')
+depends=('zsh' 'git')
+source=("$pkgname::git://github.com/arcadia-moon/arca.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $srcdir/$pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd $srcdir/$pkgname
+  install -Dm644 arca.zsh \
+    "$pkgdir/usr/share/zsh/functions/Prompts/prompt_arca_setup"
+  install -Dm644 async.zsh \
+    "$pkgdir/usr/share/zsh/functions/async"
+}

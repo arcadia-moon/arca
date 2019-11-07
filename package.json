@@ -1,0 +1,41 @@
+{
+	"name": "arca-prompt",
+	"version": "1.0.0",
+	"description": "",
+	"license": "MIT",
+	"repository": "arcadia-moon/arca",
+	"author": {
+		"name": "Arcadia",
+		"email": "arcadia@aias.io"
+	},
+	"maintainers": [
+		{
+			"name": "Arcadia",
+			"url": "https://github.com/arcadia-moon"
+		}
+	],
+	"scripts": {
+		"postinstall": "ARCA_DEST=/usr/local/share/zsh/site-functions npm run --silent postinstall-link && exit 0; ARCA_DEST=\"$PWD/functions\" npm run postinstall-link && npm run postinstall-fail-instructions",
+		"postinstall-link": "mkdir -p \"$ARCA_DEST\" && ln -sf \"$PWD/arca.zsh\" \"$ARCA_DEST/prompt_arca_setup\" && ln -sf \"$PWD/async.zsh\" \"$ARCA_DEST/async\"",
+		"postinstall-fail-instructions": "echo \"ERROR: Could not automagically symlink the prompt. Either:\\n1. Check out the readme on how to do it manually: https://github.com/arcadia-moon/arca#manually\\n2. Or add the following to your \\`.zshrc\\`:\\n\\n    fpath+=('$PWD/functions')\""
+	},
+	"files": [
+		"arca.zsh",
+		"async.zsh"
+	],
+	"keywords": [
+		"zsh",
+		"zshell",
+		"sh",
+		"shell",
+		"bash",
+		"arca",
+		"prompt",
+		"theme",
+		"git",
+		"async",
+		"fast",
+		"minimal",
+		"pretty"
+	]
+}
