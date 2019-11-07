@@ -705,13 +705,12 @@ prompt_arca_setup() {
 
 	#NOT SSH CONNECT
 	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-		hostname='%F{$prompt_arca_colors[host]}@%m%f'
-		if [[ $UID -eq 0 ]]; then
+		if [[ $UID -eq 0 ]]; thenxsxs
 			PROMPT+='%F{$prompt_arca_colors[user:root]}%n%f'
 		else
 			PROMPT+='%F{$prompt_arca_colors[user]}%n%f'
 		fi
-		PROMPT+="$hostname "
+		PROMPT+='%F{$prompt_arca_colors[host]}@%m%f '
 	else
 		PROMPT+='%F{$prompt_arca_colors[user]}$USER '
 	fi
