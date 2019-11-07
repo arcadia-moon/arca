@@ -681,7 +681,7 @@ prompt_arca_setup() {
 		path                 blue
 		prompt:error         red
 		prompt:success       magenta
-		user                 '#1DE9B6'
+		user                 10
 		user:root            default
 		virtualenv           242
 	)
@@ -712,7 +712,7 @@ prompt_arca_setup() {
 		fi
 		PROMPT+='%F{$prompt_arca_colors[host]}@%m%f '
 	else
-		PROMPT+='%F{$prompt_arca_colors[user]}$USER '
+		PROMPT+='%F{$prompt_arca_colors[user]}%B$USER%b '
 	fi
 
 	# Prompt turns red if the previous command didn't exit with 0.
