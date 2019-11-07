@@ -704,8 +704,14 @@ prompt_arca_setup() {
 	# If a virtualenv is activated, display it in grey.
 	PROMPT='%(12V.%F{$prompt_arca_colors[virtualenv]}%12v%f .)'
 
+	#NOT SSH CONNECT
+	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+	else
+		PROMPT+='%F{$prompt_arca_colors[user]}$USER '
+	fi
+
 	# Prompt turns red if the previous command didn't exit with 0.
-	PROMPT+='%F{$prompt_arca_colors[user]}$USER %(?.%F{$prompt_arca_colors[prompt:success]}.%F{$prompt_arca_colors[prompt:error]})${prompt_arca_state[prompt]}%f '
+	PROMPT+='%(?.%F{$prompt_arca_colors[prompt:success]}.%F{$prompt_arca_colors[prompt:error]})${prompt_arca_state[prompt]}%f '
 
 	# Indicate continuation prompt by … and use a darker color for it.
 	PROMPT2='%F{242}%_… %f%(?.%F{magenta}.%F{red})${prompt_arca_state[prompt]}%f '
