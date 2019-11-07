@@ -662,7 +662,9 @@ prompt_arca_setup() {
 
 	autoload -Uz add-zsh-hook
 	autoload -Uz vcs_info
-	autoload -Uz async && async
+	
+	autoload -Uz ./plugins/async && ./plugins/async
+	autoload -Uz ./plugins/alias.zsh && ./plugins/alias.zsh
 
 	# The `add-zle-hook-widget` function is not guaranteed to be available.
 	# It was added in Zsh 5.3.
@@ -753,21 +755,3 @@ prompt_arca_setup() {
 }
 
 prompt_arca_setup "$@"
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-else
-	alias egrep='egrep --color=auto'
-	alias fgrep='fgrep --color=auto'
-	alias grep='grep --color=auto'
-	alias l='ls -CF'
-	alias la='ls -A'
-	alias ll='ls -alF'
-	alias ls='ls -G'
-fi
