@@ -144,7 +144,6 @@ prompt_arca_preprompt_render() {
 	fi
 
 	# Username and machine, if applicable.
-	[[ -n $prompt_arca_state[username] ]] && preprompt_parts+=($prompt_arca_state[username])
 	# Execution time.
 	[[ -n $prompt_arca_cmd_exec_time ]] && preprompt_parts+=('%F{$prompt_arca_colors[execution_time]}${prompt_arca_cmd_exec_time}%f')
 
@@ -706,6 +705,13 @@ prompt_arca_setup() {
 
 	#NOT SSH CONNECT
 	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+		hostname='%F{$prompt_arca_colors[host]}@%m%f'
+		if [[ $UID -eq 0 ]]; then
+			PROMPT+='%F{$prompt_arca_colors[user:root]}%n%f'
+		else
+			PROMPT+='%F{$prompt_arca_colors[user]}%n%f'
+		fi
+		PROMPT+="$hostname "
 	else
 		PROMPT+='%F{$prompt_arca_colors[user]}$USER '
 	fi
