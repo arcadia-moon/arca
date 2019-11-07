@@ -663,7 +663,7 @@ prompt_arca_setup() {
 	autoload -Uz add-zsh-hook
 	autoload -Uz vcs_info
 	
-	autoload -Uz ./plugins/async && ./plugins/async
+	autoload -Uz ./plugins/async.zsh && ./plugins/async.zsh
 	autoload -Uz ./plugins/alias.zsh && ./plugins/alias.zsh
 
 	# The `add-zle-hook-widget` function is not guaranteed to be available.
