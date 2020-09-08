@@ -672,10 +672,10 @@ prompt_arca_state_setup() {
 
 	hostname='%F{$prompt_arca_colors[host]}@%m%f'
 	# Show `username@host` if logged in through SSH.
-	[[ -n $ssh_connection ]] && username='%F{$prompt_arca_colors[user]}%n%f'"$hostname"
+	# [[ -n $ssh_connection ]] && username='%F{$prompt_arca_colors[user]}%n%f'"$hostname"
 
 	# Show `username@host` if root, with username in default color.
-	[[ $UID -eq 0 ]] && username='%F{$prompt_arca_colors[user:root]}%n%f'"$hostname"
+	# [[ $UID -eq 0 ]] && username='%F{$prompt_arca_colors[user:root]}%n%f'"$hostname"
 
 	typeset -gA prompt_arca_state
 	prompt_arca_state[version]="1.11.0"
@@ -800,7 +800,7 @@ prompt_arca_setup() {
 	PROMPT='%(12V.%F{$prompt_arca_colors[virtualenv]}%12v%f .)'
 
 #NOT SSH CONNECT
-	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; || [ -n "$PROMPT_ARCA_SSH_CONNECTION" ]; then
 		if [[ $UID -eq 0 ]]; then
 			PROMPT+='%F{$prompt_arca_colors[user:root]}%B%n%b%f'
 		else
