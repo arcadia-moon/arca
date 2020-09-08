@@ -800,7 +800,7 @@ prompt_arca_setup() {
 	PROMPT='%(12V.%F{$prompt_arca_colors[virtualenv]}%12v%f .)'
 
 #NOT SSH CONNECT
-	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; || [ -n "$PROMPT_ARCA_SSH_CONNECTION" ]; then
+	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$PROMPT_ARCA_SSH_CONNECTION" ]; then
 		if [[ $UID -eq 0 ]]; then
 			PROMPT+='%F{$prompt_arca_colors[user:root]}%B%n%b%f'
 		else
